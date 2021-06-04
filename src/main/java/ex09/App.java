@@ -5,25 +5,46 @@
 
 package ex09;
 
-/*
-Sometimes you have to round up to the next number rather than follow standard rounding rules.
-
-Calculate gallons of paint needed to paint the ceiling of a room.
-Prompt for the length and width, and assume one gallon covers 350 square feet.
-Display the number of gallons needed to paint the ceiling as a whole number.
-
-Example Output
-You will need to purchase 2 gallons of paint to cover 360 square feet.
-Remember, you can’t buy a partial gallon of paint. You must
-round up to the next whole gallon.
-
-Constraints
-Use a constant to hold the conversion rate.
-Ensure that you round up to the next whole number.
- */
+import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) {
+    static Scanner in = new Scanner(System.in);
 
+    public static int CONVERSION = 350;
+
+    public static void main(String[] args) {
+        App myApp = new App();
+
+        int length = myApp.getLength();
+        int width = myApp.getWidth();
+
+        int totalSqFeet = length * width;
+        int totalGallons = myApp.gallonsNeeded(totalSqFeet);
+
+        String outputString = myApp.generateOutput(totalGallons, totalSqFeet);
+        myApp.output(outputString);
+    }
+
+    public int getLength() {
+        System.out.print("What is the length of the ceiling? ");
+        return in.nextInt();
+    }
+
+    public int getWidth() {
+        System.out.print("What is the width of the ceiling? ");
+        return in.nextInt();
+    }
+
+    public int gallonsNeeded(double totalSqFeet) {
+        return (int) Math.ceil(totalSqFeet /CONVERSION);
+    }
+
+    public String generateOutput(int totalGallons, int sqFeet) {
+        return String.format("You will need to purchase %d gallons of paint to cover %d square feet.",
+                totalGallons, sqFeet);
+    }
+
+    public void output(String outputString) {
+        System.out.println(outputString);
     }
 }
