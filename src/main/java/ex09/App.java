@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class App {
     static Scanner in = new Scanner(System.in);
 
-    public static int CONVERSION = 350;
+    public static double CONVERSION = 350;
 
     public static void main(String[] args) {
         App myApp = new App();
@@ -35,8 +35,8 @@ public class App {
         return in.nextInt();
     }
 
-    public int gallonsNeeded(double totalSqFeet) {
-        return (int) Math.ceil(totalSqFeet /CONVERSION);
+    public int gallonsNeeded(int totalSqFeet) {
+        return (int) Math.ceil(totalSqFeet / CONVERSION);
     }
 
     public String generateOutput(int totalGallons, int sqFeet) {
