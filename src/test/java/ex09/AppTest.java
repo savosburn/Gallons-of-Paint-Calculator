@@ -14,12 +14,11 @@ class AppTest {
     public void output_string_includes_numGallons_and_total_sqFeet() {
         App myApp = new App();
 
-        int totalGal = (int) Math.ceil(36 * 10 / 350.0);
-        int sqFeet = 36 * 10;
+        int totalGal = myApp.gallonsNeeded(36 * 10);
 
         String expectedOutput = "You will need to purchase 2 gallons of paint to cover 360 square feet.";
 
-        String actualOutput = myApp.generateOutput(totalGal, sqFeet);
+        String actualOutput = myApp.generateOutput(totalGal, 36 * 10);
 
         assertEquals(expectedOutput, actualOutput);
     }
